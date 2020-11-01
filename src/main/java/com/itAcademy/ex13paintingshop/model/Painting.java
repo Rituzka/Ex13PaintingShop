@@ -41,6 +41,10 @@ public class Painting implements Serializable {
 
     }
 
+    @JoinColumn(name = "shop_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Shop shop;
+
     public int getIdPainting() {
         return idPainting;
     }
