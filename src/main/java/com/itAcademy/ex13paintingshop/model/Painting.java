@@ -5,20 +5,20 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table (name = "paintingshops")
+@Table (name = "paintings")
 public class Painting implements Serializable {
     private static final long Uid = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "painting_id")
-    private int idShop;
+    private int idPainting;
 
     @Column(name = "painting_name")
-    private String name;
+    private String paintingName;
 
     @Column(name = "painting_price")
-    private float price;
+    private float paintingPrice;
 
     @Column(name = "date_arrival")
     private Date arrivalDate;
@@ -30,15 +30,13 @@ public class Painting implements Serializable {
     public Painting(){}
 
     public Painting(
-            int idShop,
-            String name,
-            float price,
+            String paintingName,
+            float paitingPrice,
             Date arrivalDate,
             String author){
 
-        this.idShop = idShop;
-        this.name = name;
-        this.price = price;
+        this.paintingName = paintingName;
+        this.paintingPrice = paitingPrice;
         this.arrivalDate = arrivalDate;
         this.author = author;
 
@@ -48,28 +46,28 @@ public class Painting implements Serializable {
         return Uid;
     }
 
-    public int getIdShop() {
-        return idShop;
+    public int getIdPainting() {
+        return idPainting;
     }
 
-    public void setIdShop(int idShop) {
-        this.idShop = idShop;
+    public void setIdPainting(int idPainting) {
+        this.idPainting = idPainting;
     }
 
-    public String getName() {
-        return name;
+    public String getPaintingName() {
+        return paintingName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPaintingName(String paintingName) {
+        this.paintingName = paintingName;
     }
 
-    public float getPrice() {
-        return price;
+    public float getPaintingPrice() {
+        return paintingPrice;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setPaintingPrice(float paintingPrice) {
+        this.paintingPrice = paintingPrice;
     }
 
     public Date getArrivalDate() {
