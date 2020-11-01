@@ -7,7 +7,6 @@ import java.util.Date;
 @Entity
 @Table (name = "paintings")
 public class Painting implements Serializable {
-    private static final long Uid = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,10 +39,6 @@ public class Painting implements Serializable {
         this.arrivalDate = arrivalDate;
         this.author = author;
 
-    }
-
-    public static long getUid() {
-        return Uid;
     }
 
     public int getIdPainting() {
