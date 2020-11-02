@@ -7,8 +7,6 @@ import java.io.Serializable;
 @Table(name = "shops")
 public class Shop implements Serializable {
 
-    private static final long serialVersionUid = 1L;
-
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Column(name = "shop_id")
@@ -33,9 +31,6 @@ public class Shop implements Serializable {
         this.shopCapacity = shopCapacity;
     };
 
-    public static long getSerialVersionUid() {
-        return serialVersionUid;
-    }
 
     public int getIdShop() {
         return idShop;
