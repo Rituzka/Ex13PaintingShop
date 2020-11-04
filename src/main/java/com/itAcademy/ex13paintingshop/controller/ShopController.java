@@ -9,46 +9,44 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestController("/api/v1/")
+@RestController("/api/v1/shops")
 public class ShopController {
     
     @Autowired
     ShopServiceImpl service;
-    
+
+    @Autowired
+
+
     //get all the shops
-    @GetMapping("/shops")
+    @GetMapping
     public List<Shop> getAllShops(){
         return service.getAllShops();
     }
     
     //get a shop by id
-    @GetMapping(path = "/shops/{id}")
+    @GetMapping(path = "/{id}")
     public Shop getShopById(@PathVariable(name = "id" ) int id){
         return service.getShopById(id);
     }
 
     //add a shop
-    @PostMapping("/shops")
+    @PostMapping
     public void addShop(@RequestBody Shop shop){
         service.addShop(shop);
     }
 
     //update a shop
-    @PutMapping("/shops/{id}")
+    @PutMapping("/{id}")
     public void updateShop(@PathVariable(name = "id") int id ,@RequestBody Shop shop){
         shop.setIdShop(id);
         service.updateShop(shop);
     }
 
     //Delete one shop by id
-    @DeleteMapping("/shops/{id}")
+    @DeleteMapping("/{id}")
     public HttpStatus deleteShop(@PathVariable(name = "id") int id){
         service.deleteShop(id);
         return HttpStatus.OK;
     }
-
-
-
-
-
 }

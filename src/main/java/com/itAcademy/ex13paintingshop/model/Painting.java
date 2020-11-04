@@ -1,5 +1,7 @@
 package com.itAcademy.ex13paintingshop.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -41,8 +43,9 @@ public class Painting implements Serializable {
 
     }
 
-    @JoinColumn(name = "shop_id")
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shop_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Shop shop;
 
     public int getIdPainting() {
