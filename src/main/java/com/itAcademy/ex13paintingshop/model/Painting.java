@@ -75,4 +75,16 @@ public class Painting extends AbstractEntity implements Serializable {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+
+    @Override
+    public String toString() {
+        return "Painting{" +
+                "paintingName='" + paintingName + '\'' +
+                ", paintingPrice=" + paintingPrice +
+                ", arrivalDate=" + arrivalDate +
+                ", author='" + author + '\'' +
+                ", shop=" + shop +
+                '}';
+    }
 }

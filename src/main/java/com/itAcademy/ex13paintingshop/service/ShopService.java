@@ -5,13 +5,11 @@ import com.itAcademy.ex13paintingshop.model.Shop;
 import com.itAcademy.ex13paintingshop.repository.IShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 
 @Service
-@Transactional
 public class ShopService {
 
     @Autowired
@@ -23,7 +21,7 @@ public class ShopService {
     }
 
 
-    public Shop getShopById(int id) {
+    public Shop getShopById(long id) {
         Optional<Shop> shopDB = repository.findById(id);
 
         if(shopDB.isPresent())
@@ -39,11 +37,11 @@ public class ShopService {
 
 
     public void updateShop(Shop shop) {
-        Optional<Shop> shopDB = repository.findById(shop.getIdShop());
+        Optional<Shop> shopDB = repository.findById(shop.getId());
 
         if(shopDB.isPresent()) {
             Shop shopToUpdate = shopDB.get();
-            shopToUpdate.setIdShop(shop.getIdShop());
+            shopToUpdate.setId(shop.getId());
             shopToUpdate.setShopName(shop.getShopName());
             shopToUpdate.setShopCapacity(shop.getShopCapacity());
 
@@ -53,7 +51,7 @@ public class ShopService {
     }
 
 
-    public void deleteShop(int id) {
+    public void deleteShop(long id) {
         Optional<Shop> shopDB = repository.findById(id);
 
         if (shopDB.isPresent())

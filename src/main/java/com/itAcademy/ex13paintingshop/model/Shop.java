@@ -49,4 +49,13 @@ public class Shop extends AbstractEntity implements Serializable {
         return paintings;
     }
 
+
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "shopName='" + shopName + '\'' +
+                ", shopCapacity=" + shopCapacity +
+                ", paintings=" + paintings +
+                '}';
+    }
 }
