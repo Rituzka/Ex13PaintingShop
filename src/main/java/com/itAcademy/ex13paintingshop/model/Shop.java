@@ -16,7 +16,7 @@ public class Shop extends AbstractEntity implements Serializable {
     private int shopCapacity;
 
     @OneToMany(mappedBy = "shops", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Painting> paintings = new LinkedList<>();
+    private final List<Painting> paintings = new LinkedList<>();
 
     public Shop(){};
 

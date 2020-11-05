@@ -15,8 +15,6 @@ public class ShopController {
     @Autowired
     ShopService service;
 
-    @Autowired
-
 
     //get all the shops
     @GetMapping
@@ -26,7 +24,7 @@ public class ShopController {
     
     //get a shop by id
     @GetMapping(path = "/{id}")
-    public Shop getShopById(@PathVariable(name = "id" ) int id){
+    public Shop getShopById(@PathVariable(name = "id" ) long id){
         return service.getShopById(id);
     }
 
@@ -38,14 +36,14 @@ public class ShopController {
 
     //update a shop
     @PutMapping("/{id}")
-    public void updateShop(@PathVariable(name = "id") int id ,@RequestBody Shop shop){
-        shop.setIdShop(id);
+    public void updateShop(@PathVariable(name = "id") long id ,@RequestBody Shop shop){
+        shop.setId(id);
         service.updateShop(shop);
     }
 
     //Delete one shop by id
     @DeleteMapping("/{id}")
-    public HttpStatus deleteShop(@PathVariable(name = "id") int id){
+    public HttpStatus deleteShop(@PathVariable(name = "id") long id){
         service.deleteShop(id);
         return HttpStatus.OK;
     }
