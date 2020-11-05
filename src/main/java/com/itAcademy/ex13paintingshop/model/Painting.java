@@ -8,12 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table (name = "paintings")
-public class Painting implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "painting_id")
-    private int idPainting;
+public class Painting extends AbstractEntity implements Serializable {
 
     @Column(name = "painting_name")
     private String paintingName;
@@ -48,13 +43,6 @@ public class Painting implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Shop shop;
 
-    public int getIdPainting() {
-        return idPainting;
-    }
-
-    public void setIdPainting(int idPainting) {
-        this.idPainting = idPainting;
-    }
 
     public String getPaintingName() {
         return paintingName;

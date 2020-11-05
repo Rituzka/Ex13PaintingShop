@@ -2,15 +2,12 @@ package com.itAcademy.ex13paintingshop.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 @Table(name = "shops")
-public class Shop implements Serializable {
-
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name = "shop_id")
-    private int idShop;
+public class Shop extends AbstractEntity implements Serializable {
 
    @Column(name = "shop_name")
     private String shopName;
@@ -19,7 +16,7 @@ public class Shop implements Serializable {
     private int shopCapacity;
 
     @OneToMany(mappedBy = "shops", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private Painting painting;
+    private List<Painting> paintings = new LinkedList<>();
 
     public Shop(){};
 
@@ -31,14 +28,6 @@ public class Shop implements Serializable {
         this.shopCapacity = shopCapacity;
     };
 
-
-    public int getIdShop() {
-        return idShop;
-    }
-
-    public void setIdShop(int idShop) {
-        this.idShop = idShop;
-    }
 
     public String getShopName() {
         return shopName;
@@ -56,11 +45,8 @@ public class Shop implements Serializable {
         this.shopCapacity = shopCapacity;
     }
 
-    public Painting getPainting() {
-        return painting;
+    public List<Painting> getPaintings() {
+        return paintings;
     }
 
-    public void setPainting(Painting painting) {
-        this.painting = painting;
-    }
 }

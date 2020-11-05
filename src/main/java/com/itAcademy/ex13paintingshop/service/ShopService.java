@@ -12,17 +12,17 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class ShopServiceImpl implements IShopService {
+public class ShopService {
 
     @Autowired
     IShopRepository repository;
 
-    @Override
+
     public List<Shop> getAllShops() {
         return repository.findAll();
     }
 
-    @Override
+
     public Shop getShopById(int id) {
         Optional<Shop> shopDB = repository.findById(id);
 
@@ -32,12 +32,12 @@ public class ShopServiceImpl implements IShopService {
             throw new ResourceNotFoundException("Shop not found");
     }
 
-    @Override
+
     public void addShop(Shop shop) {
         repository.save(shop);
     }
 
-    @Override
+
     public void updateShop(Shop shop) {
         Optional<Shop> shopDB = repository.findById(shop.getIdShop());
 
@@ -52,7 +52,7 @@ public class ShopServiceImpl implements IShopService {
 
     }
 
-    @Override
+
     public void deleteShop(int id) {
         Optional<Shop> shopDB = repository.findById(id);
 

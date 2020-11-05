@@ -1,7 +1,7 @@
 package com.itAcademy.ex13paintingshop.controller;
 
 import com.itAcademy.ex13paintingshop.model.Shop;
-import com.itAcademy.ex13paintingshop.service.ShopServiceImpl;
+import com.itAcademy.ex13paintingshop.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.List;
 public class ShopController {
     
     @Autowired
-    ShopServiceImpl service;
+    ShopService service;
 
     @Autowired
 
