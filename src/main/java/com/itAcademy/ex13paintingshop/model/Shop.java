@@ -7,9 +7,12 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
+@Table(name = "shops")
 public class Shop extends AbstractEntity implements Serializable {
 
-   @Column(name = "shop_name")
+    private static final long serialVersionUID = -3420677085254903680L;
+    
+    @Column(name = "shop_name")
    @NotNull
     private String shopName;
 

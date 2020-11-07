@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 
 @Entity
+@Table(name = "paintings")
 public class Painting extends AbstractEntity implements Serializable {
 
     @Column(name = "painting_name")
