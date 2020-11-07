@@ -16,7 +16,7 @@
   --painting_name VARCHAR(250) NOT NULL,
   --painting_price DECIMAL(2,0) NOT NULL,
   --date_arrival DATE NOT NULL,
-  --author VARCHAR(45) NULL DEFAULT NULL,
+  --author VARCHAR(250) NULL DEFAULT NULL,
   --id_shop INT NOT NULL,
   --FOREIGN KEY (id_shop) REFERENCES shops(shop_id);
 

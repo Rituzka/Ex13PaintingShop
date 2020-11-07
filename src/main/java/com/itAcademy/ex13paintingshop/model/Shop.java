@@ -1,22 +1,24 @@
 package com.itAcademy.ex13paintingshop.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Entity
-@Table(name = "shops")
 public class Shop extends AbstractEntity implements Serializable {
 
    @Column(name = "shop_name")
+   @NotNull
     private String shopName;
 
    @Column(name = "shop_capacity")
+   @NotNull
     private int shopCapacity;
 
-    @OneToMany(mappedBy = "shops", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private final List<Painting> paintings = new LinkedList<>();
+    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private final List<Painting> paintings = new ArrayList<>();
 
     public Shop(){};
 

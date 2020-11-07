@@ -1,46 +1,30 @@
 package com.itAcademy.ex13paintingshop.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+
 
 @Entity
-@Table (name = "paintings")
 public class Painting extends AbstractEntity implements Serializable {
 
     @Column(name = "painting_name")
+    @NotNull
     private String paintingName;
 
     @Column(name = "painting_price")
+    @NotNull
     private float paintingPrice;
 
     @Column(name = "date_arrival")
-    private Date arrivalDate;
+    @NotNull
+    private String arrivalDate;
 
     @Column(name = "author")
     private String author;
 
-
-    public Painting(){}
-
-    public Painting(
-            String paintingName,
-            float paitingPrice,
-            Date arrivalDate,
-            String author){
-
-        this.paintingName = paintingName;
-        this.paintingPrice = paitingPrice;
-        this.arrivalDate = arrivalDate;
-        this.author = author;
-
-    }
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Shop shop;
 
 
@@ -60,11 +44,11 @@ public class Painting extends AbstractEntity implements Serializable {
         this.paintingPrice = paintingPrice;
     }
 
-    public Date getArrivalDate() {
+    public String getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(Date arrivalDate) {
+    public void setArrivalDate(String arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 
@@ -76,6 +60,13 @@ public class Painting extends AbstractEntity implements Serializable {
         this.author = author;
     }
 
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
 
     @Override
     public String toString() {
