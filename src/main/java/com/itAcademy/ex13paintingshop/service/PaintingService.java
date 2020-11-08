@@ -5,6 +5,7 @@ import com.itAcademy.ex13paintingshop.model.Painting;
 import com.itAcademy.ex13paintingshop.model.Shop;
 import com.itAcademy.ex13paintingshop.repository.IPaintingRepository;
 import com.itAcademy.ex13paintingshop.repository.IShopRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -16,13 +17,12 @@ import java.util.stream.Stream;
 @Service
 public class PaintingService {
 
-    private final IPaintingRepository paintingRepository;
-    private final IShopRepository shopRepository;
+    @Autowired
+    IPaintingRepository paintingRepository;
 
-    public PaintingService(IPaintingRepository paintingRepository, IShopRepository shopRepository) {
-        this.paintingRepository = paintingRepository;
-        this.shopRepository = shopRepository;
-    }
+    @Autowired
+    IShopRepository shopRepository;
+
 
     public List<Painting> getAllPaintings(){
         return paintingRepository.findAll();
@@ -37,7 +37,7 @@ public class PaintingService {
             throw new ResourceNotFoundException("Painting not found");
     }
 
-
+/*
     public void addPainting(Painting painting) {
         if(painting == null)
             throw new ResourceNotFoundException("Painting is null, are you sure you put all the information required?");
@@ -99,6 +99,6 @@ public class PaintingService {
                             }).collect(Collectors.toList()));
 
         }
-    }
+    }*/
 
 }

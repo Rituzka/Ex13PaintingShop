@@ -3,6 +3,7 @@ package com.itAcademy.ex13paintingshop.service;
 import com.itAcademy.ex13paintingshop.exceptions.ResourceNotFoundException;
 import com.itAcademy.ex13paintingshop.model.Shop;
 import com.itAcademy.ex13paintingshop.repository.IShopRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -11,18 +12,15 @@ import java.util.Optional;
 @Service
 public class ShopService {
 
-    private final IShopRepository shopRepository;
+    @Autowired
+    IShopRepository shopRepository;
 
-    public ShopService(IShopRepository shopRepository) {
-        this.shopRepository = shopRepository;
-
-    }
 
     public List<Shop> getAllShops() {
         return shopRepository.findAll();
     }
 
-
+/*
     public Shop getShopById(long id) {
         Optional<Shop> shopDB = shopRepository.findById(id);
 
@@ -61,5 +59,5 @@ public class ShopService {
         else
             throw new ResourceNotFoundException("Shop not found");
 
-    }
+    }*/
 }

@@ -69,14 +69,4 @@ public class Painting extends AbstractEntity implements Serializable {
         this.shop = shop;
     }
 
-    @Override
-    public String toString() {
-        return "Painting{" +
-                "paintingName='" + paintingName + '\'' +
-                ", paintingPrice=" + paintingPrice +
-                ", arrivalDate=" + arrivalDate +
-                ", author='" + author + '\'' +
-                ", shop=" + shop +
-                '}';
-    }
 }

@@ -20,29 +20,29 @@ public class PaintingController {
         return paintingService.getAllPaintings();
     }
 
-    //get painting by id
-    @GetMapping(path = "/{id}")
+
+/*    @GetMapping(path = "/{id}")
     public Painting getPaintingById(@PathVariable(name = "id" ) long id){
         return paintingService.getPaintingById(id);
     }
 
-    //add a new painting
+
     @PostMapping
     public void addPainting(@RequestBody Painting painting){
         paintingService.addPainting(painting);
     }
 
-    //update a painting
+
     @PutMapping("/{id}")
     public void updatePainting(@PathVariable(name = "id") long id ,@RequestBody Painting painting){
         painting.setId(id);
         paintingService.updatePainting(painting);
     }
 
-    //Delete one Painting by id
+
     @DeleteMapping("/{id}")
     public HttpStatus deletePainting(@PathVariable(name = "id") long id){
         paintingService.deletePainting(id);
         return HttpStatus.OK;
-    }
+    }*/
 }

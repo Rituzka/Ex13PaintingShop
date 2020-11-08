@@ -1,7 +1,6 @@
 package com.itAcademy.ex13paintingshop.model;
 
 import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
@@ -10,7 +9,7 @@ import java.util.*;
 @Table(name = "shops")
 public class Shop extends AbstractEntity implements Serializable {
 
-    private static final long serialVersionUID = -3420677085254903680L;
+    private static final long serialVersionUID = 1L;
     
     @Column(name = "shop_name")
    @NotNull
@@ -55,12 +54,4 @@ public class Shop extends AbstractEntity implements Serializable {
     }
 
 
-    @Override
-    public String toString() {
-        return "Shop{" +
-                "shopName='" + shopName + '\'' +
-                ", shopCapacity=" + shopCapacity +
-                ", paintings=" + paintings +
-                '}';
-    }
 }
