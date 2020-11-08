@@ -40,21 +40,21 @@ public class PaintingController {
     }
 
    // add a Painting to a Shop
-    @PostMapping("shops/{shopId}/paintings")
+    @PostMapping("/shops/{shopId}/paintings")
     public void addPainting(@PathVariable(value = "shopId") Long shopId,
                             @RequestBody Painting painting){
         paintingService.addPaintingToAShop(shopId, painting);
     }
 
     //update a painting by id
-    @PutMapping("shops/{paintingId}/paintings")
+    @PutMapping("/shops/{paintingId}/paintings")
     public void updatePaintingById(@PathVariable(name = "paintingId") Long paintingId,
                                @RequestBody Painting painting){
         paintingService.updatePaintingById(paintingId, painting);
     }
 
 
-    @DeleteMapping("shops/{paintingId}/paintings")
+    @DeleteMapping("/shops/{paintingId}/paintings")
     public HttpStatus deletePaintingById(@PathVariable(name = "paintingId") Long paintingId){
         paintingService.deletePainting(paintingId);
         return HttpStatus.OK;

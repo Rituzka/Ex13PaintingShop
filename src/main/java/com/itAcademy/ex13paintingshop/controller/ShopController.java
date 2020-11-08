@@ -23,7 +23,7 @@ public class ShopController {
     }
 
     //get a shop by id
-    @GetMapping("shops/{id}")
+    @GetMapping("/shops/{id}")
     public Shop getShopById(@PathVariable(name = "id" ) long id){
         return service.getShopById(id);
     }
