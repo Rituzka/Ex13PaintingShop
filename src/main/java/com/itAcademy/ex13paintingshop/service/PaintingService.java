@@ -2,17 +2,15 @@ package com.itAcademy.ex13paintingshop.service;
 
 import com.itAcademy.ex13paintingshop.exceptions.ResourceNotFoundException;
 import com.itAcademy.ex13paintingshop.model.Painting;
-import com.itAcademy.ex13paintingshop.model.Shop;
 import com.itAcademy.ex13paintingshop.repository.IPaintingRepository;
 import com.itAcademy.ex13paintingshop.repository.IShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 @Service
 public class PaintingService {
@@ -23,11 +21,17 @@ public class PaintingService {
     @Autowired
     IShopRepository shopRepository;
 
-
+    //get a list of all paintings of all shops
     public List<Painting> getAllPaintings(){
         return paintingRepository.findAll();
     }
 
+    //get a list of all paintings of an specific shop
+    public Page<Painting> getAllPaintingsByShopId(Long shopId, Pageable pageable){
+        return paintingRepository.findByShopId(shopId, pageable);
+    }
+
+   //get a painting by id
     public Painting getPaintingById(long id) {
         Optional<Painting> paintingDB = paintingRepository.findById(id);
 
@@ -37,17 +41,18 @@ public class PaintingService {
             throw new ResourceNotFoundException("Painting not found");
     }
 
-/*
-    public void addPainting(Painting painting) {
-        if(painting == null)
-            throw new ResourceNotFoundException("Painting is null, are you sure you put all the information required?");
-        else
-            paintingRepository.save(painting);
+    //add a painting to an specific shop
+    public Painting addPaintingToAShop(Long shopId, Painting painting) {
+        return shopRepository.findById(shopId).map(shop -> {
+            painting.setShop(shop);
+            return paintingRepository.save(painting);
+        }).orElseThrow(() -> new ResourceNotFoundException("ShopId" + shopId
+                + "not found"));
     }
 
-
-    public void updatePainting(Painting painting) {
-        Optional<Painting> paintingDB = paintingRepository.findById(painting.getId());
+  //update painting by id
+    public void updatePaintingById(Long paintingId, Painting painting) {
+        Optional<Painting> paintingDB = paintingRepository.findById(paintingId);
 
         if(paintingDB.isPresent()) {
             Painting paintingToUpdate = paintingDB.get();
@@ -69,36 +74,4 @@ public class PaintingService {
         else
             throw new ResourceNotFoundException("Painting not found");
     }
-    // Dummy data
-    @PostConstruct
-    public void populateTestData() {
-        List<Shop> shops = shopRepository.findAll();
-
-        if (shopRepository.count() == 0) {
-            shops.add(new Shop("White Collar 1", 254));
-            shops.add(new Shop("White Collar 2", 396));
-            shops.add(new Shop("White Collar 3", 157));
-        }
-
-        if (paintingRepository.count() == 0) {
-            Random r = new Random(0);
-            paintingRepository.saveAll(
-                    Stream.of("Gabrielle", "Robinson", "Haugen",
-                            "Koen", "Macdonald", "Karlsson", "Gustavsson", "Svensson",
-                            "Stewart", "Corinne", "Ryann", "Jackson", "Kelly",
-                            "Walker")
-
-                            .map(name -> {
-                                Painting painting = new Painting();
-                                painting.setPaintingName(name);
-                                painting.setPaintingPrice(r.nextFloat() * 100);
-                                painting.setArrivalDate("12/10/2020");
-                                painting.setAuthor(name + "ius");
-                                painting.setShop(shops.get(r.nextInt(shops.size())));
-                                return painting;
-                            }).collect(Collectors.toList()));
-
-        }
-    }*/
-
 }

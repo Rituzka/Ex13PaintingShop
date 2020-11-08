@@ -19,8 +19,6 @@ public class Shop extends AbstractEntity implements Serializable {
    @NotNull
     private int shopCapacity;
 
-    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private final List<Painting> paintings = new ArrayList<>();
 
     public Shop(){};
 
@@ -31,7 +29,6 @@ public class Shop extends AbstractEntity implements Serializable {
         this.shopName = shopName;
         this.shopCapacity = shopCapacity;
     };
-
 
     public String getShopName() {
         return shopName;
@@ -48,10 +45,5 @@ public class Shop extends AbstractEntity implements Serializable {
     public void setShopCapacity(int shopCapacity) {
         this.shopCapacity = shopCapacity;
     }
-
-    public List<Painting> getPaintings() {
-        return paintings;
-    }
-
 
 }

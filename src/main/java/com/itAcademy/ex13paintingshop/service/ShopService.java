@@ -20,7 +20,7 @@ public class ShopService {
         return shopRepository.findAll();
     }
 
-/*
+
     public Shop getShopById(long id) {
         Optional<Shop> shopDB = shopRepository.findById(id);
 
@@ -59,5 +59,5 @@ public class ShopService {
         else
             throw new ResourceNotFoundException("Shop not found");
 
-    }*/
+    }
 }

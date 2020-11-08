@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestController("/api/v1/shops")
+@RestController
 public class ShopController {
 
     @Autowired
@@ -17,36 +17,31 @@ public class ShopController {
 
 
     //get all the shops
-    @GetMapping
+    @GetMapping("/shops")
     public List<Shop> getAllShops() {
         return service.getAllShops();
     }
-  /*
 
-    @GetMapping(path = "/{id}")
+    //get a shop by id
+    @GetMapping("shops/{id}")
     public Shop getShopById(@PathVariable(name = "id" ) long id){
         return service.getShopById(id);
     }
-
-
-    @PostMapping
+    //create a new shop
+    @PostMapping("/shops")
     public void addShop(@RequestBody Shop shop){
         service.addShop(shop);
     }
-
-
-    @PutMapping("/{id}")
+    //update a shop
+    @PutMapping("/shops/{id}")
     public void updateShop(@PathVariable(name = "id") long id ,@RequestBody Shop shop){
         shop.setId(id);
         service.updateShop(shop);
     }
-
-
-    @DeleteMapping("/{id}")
+    //delete a shop
+    @DeleteMapping("/shops/{id}")
     public HttpStatus deleteShop(@PathVariable(name = "id") long id){
         service.deleteShop(id);
         return HttpStatus.OK;
     }
-*/
-
 }
