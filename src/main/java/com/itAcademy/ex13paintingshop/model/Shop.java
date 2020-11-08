@@ -3,7 +3,6 @@ package com.itAcademy.ex13paintingshop.model;
 import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.*;
 
 @Entity
 @Table(name = "shops")

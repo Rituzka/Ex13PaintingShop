@@ -3,9 +3,7 @@ package com.itAcademy.ex13paintingshop.controller;
 import com.itAcademy.ex13paintingshop.model.Painting;
 import com.itAcademy.ex13paintingshop.service.PaintingService;
 import com.itAcademy.ex13paintingshop.service.ShopService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.beans.factory.annotation.Autowired;;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -26,12 +24,6 @@ public class PaintingController {
         return paintingService.getAllPaintings();
     }
 
-    //get all paintings by shop id
-    @GetMapping("/shops/{shopId}/paintings")
-    public Page<Painting> getAllPaintingsByShopId(@PathVariable(value = "shopId") Long shopId,
-                                                  Pageable pageable) {
-        return paintingService.getAllPaintingsByShopId(shopId,pageable);
-    }
 
     //find a painting by the id
     @GetMapping(path = "/{id}")

@@ -5,8 +5,6 @@ import com.itAcademy.ex13paintingshop.model.Painting;
 import com.itAcademy.ex13paintingshop.repository.IPaintingRepository;
 import com.itAcademy.ex13paintingshop.repository.IShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -21,14 +19,9 @@ public class PaintingService {
     @Autowired
     IShopRepository shopRepository;
 
-    //get a list of all paintings of all shops
+    //get a list of all paintings
     public List<Painting> getAllPaintings(){
         return paintingRepository.findAll();
-    }
-
-    //get a list of all paintings of an specific shop
-    public Page<Painting> getAllPaintingsByShopId(Long shopId, Pageable pageable){
-        return paintingRepository.findByShopId(shopId, pageable);
     }
 
    //get a painting by id
