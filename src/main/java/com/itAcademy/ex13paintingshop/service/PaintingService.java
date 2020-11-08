@@ -35,8 +35,8 @@ public class PaintingService {
     }
 
     //add a painting to an specific shop
-    public Painting addPaintingToAShop(Long shopId, Painting painting) {
-        return shopRepository.findById(shopId).map(shop -> {
+    public void addPaintingToAShop(Long shopId, Painting painting) {
+         shopRepository.findById(shopId).map(shop -> {
             painting.setShop(shop);
             return paintingRepository.save(painting);
         }).orElseThrow(() -> new ResourceNotFoundException("ShopId" + shopId
@@ -44,20 +44,18 @@ public class PaintingService {
     }
 
   //update painting by id
-    public void updatePaintingById(Long paintingId, Painting painting) {
-        Optional<Painting> paintingDB = paintingRepository.findById(paintingId);
+    public void updatePaintingById(Long paintingId, Painting paintingRequest) {
+        paintingRepository.findById(paintingId).map(painting -> {
 
-        if(paintingDB.isPresent()) {
-            Painting paintingToUpdate = paintingDB.get();
-            paintingToUpdate.setId(painting.getId());
-            paintingToUpdate.setPaintingName(painting.getPaintingName());
-            paintingToUpdate.setPaintingPrice(painting.getPaintingPrice());
-            paintingToUpdate.setArrivalDate(painting.getArrivalDate());
-            paintingToUpdate.setAuthor(painting.getAuthor());
+            painting.setPaintingName(paintingRequest.getPaintingName());
+            painting.setPaintingPrice(paintingRequest.getPaintingPrice());
+            painting.setArrivalDate(paintingRequest.getArrivalDate());
+            painting.setAuthor(paintingRequest.getAuthor());
 
-        } else
-            throw new ResourceNotFoundException("Painting not found");
+            return paintingRepository.save(painting);
+        }).orElseThrow(() -> new ResourceNotFoundException("Painting not found"));
     }
+
 
     public void deletePainting(long id) {
         Optional<Painting> paintingDB = paintingRepository.findById(id);

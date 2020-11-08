@@ -5,11 +5,13 @@ import com.itAcademy.ex13paintingshop.service.PaintingService;
 import com.itAcademy.ex13paintingshop.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
 @RestController
+@RequestMapping("/shops")
 public class PaintingController {
 
     @Autowired
@@ -19,36 +21,36 @@ public class PaintingController {
     ShopService shopService;
 
     //get all paintings
-    @GetMapping("/shops/paintings")
+    @GetMapping("/paintings")
     public List<Painting> getAllPaintingsByShopId(){
         return paintingService.getAllPaintings();
     }
 
-
     //find a painting by the id
-    @GetMapping(path = "/{id}")
+    @GetMapping("/paintings/{id}")
     public Painting getPaintingById(@PathVariable(name = "id" ) Long id){
         return paintingService.getPaintingById(id);
     }
 
    // add a Painting to a Shop
-    @PostMapping("/shops/{shopId}/paintings")
+    @PostMapping("/{shopId}/paintings")
     public void addPainting(@PathVariable(value = "shopId") Long shopId,
                             @RequestBody Painting painting){
         paintingService.addPaintingToAShop(shopId, painting);
     }
 
     //update a painting by id
-    @PutMapping("/shops/{paintingId}/paintings")
-    public void updatePaintingById(@PathVariable(name = "paintingId") Long paintingId,
+    @PutMapping("paintings/{id}")
+    public HttpStatus updatePaintingById(@PathVariable(name = "id") Long paintingId,
                                @RequestBody Painting painting){
         paintingService.updatePaintingById(paintingId, painting);
+        return HttpStatus.OK;
     }
 
 
-    @DeleteMapping("/shops/{paintingId}/paintings")
-    public HttpStatus deletePaintingById(@PathVariable(name = "paintingId") Long paintingId){
+    @DeleteMapping("paintings/{id}")
+    public ResponseEntity<?> deletePaintingById(@PathVariable(name = "id") Long paintingId){
         paintingService.deletePainting(paintingId);
-        return HttpStatus.OK;
+        return ResponseEntity.ok().build();
     }
 }

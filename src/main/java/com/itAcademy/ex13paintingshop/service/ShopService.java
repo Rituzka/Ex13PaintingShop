@@ -36,18 +36,13 @@ public class ShopService {
     }
 
 
-    public void updateShop(Shop shop) {
-        Optional<Shop> shopDB = shopRepository.findById(shop.getId());
+    public void updateShop(Long shopId, Shop shopRequest) {
+       shopRepository.findById(shopId).map(shop -> {
 
-        if(shopDB.isPresent()) {
-            Shop shopToUpdate = shopDB.get();
-            shopToUpdate.setId(shop.getId());
-            shopToUpdate.setShopName(shop.getShopName());
-            shopToUpdate.setShopCapacity(shop.getShopCapacity());
-
-        } else
-            throw new ResourceNotFoundException("Shop not found");
-
+           shop.setShopName(shopRequest.getShopName());
+           shop.setShopCapacity(shopRequest.getShopCapacity());
+           return shopRepository.save(shop);
+       }).orElseThrow(() -> new ResourceNotFoundException("Shop not found"));
     }
 
 
