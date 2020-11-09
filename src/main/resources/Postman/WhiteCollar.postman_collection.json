@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "b4c2ce65-c95e-4d1c-85df-6eccacc365c0",
+		"name": "WhiteCollar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add a shop",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"shopName\": \"White Collar 2\",\r\n        \"shopCapacity\": 5780\r\n      \r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/shops",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gell all shops",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/shops",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update a shop",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 12,\r\n        \"shopName\": \"White Collar Eixample\",\r\n        \"shopCapacity\": 583,\r\n        \"persisted\": true\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/shops/12",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a shop",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/shops/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all paintings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/shops/paintings",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"paintings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add paintings to a shop",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"paintingName\": \"El regreso\",\r\n        \"paintingPrice\": 940,\r\n        \"arrivalDate\": \"15/10/2020\",\r\n        \"author\": \"Steven Spielberg\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/shops/3/paintings",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"3",
+						"paintings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update a painting",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 14,\r\n        \"paintingName\": \"La vieja carroza\",\r\n        \"paintingPrice\": 345.0,\r\n        \"arrivalDate\": \"10/10/2020\",\r\n        \"author\": \"Manuel Tejedo\",\r\n        \"persisted\": true\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/shops/paintings/14",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"paintings",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a painting",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/shops/paintings/14",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"paintings",
+						"14"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -34,9 +34,10 @@ public class PaintingController {
 
    // add a Painting to a Shop
     @PostMapping("/{shopId}/paintings")
-    public void addPainting(@PathVariable(value = "shopId") Long shopId,
+    public ResponseEntity<?> addPainting(@PathVariable(value = "shopId") Long shopId,
                             @RequestBody Painting painting){
         paintingService.addPaintingToAShop(shopId, painting);
+        return ResponseEntity.status(HttpStatus.CREATED).body(painting);
     }
 
     //update a painting by id

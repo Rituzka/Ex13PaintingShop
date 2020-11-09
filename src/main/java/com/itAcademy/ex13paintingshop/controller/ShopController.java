@@ -32,8 +32,9 @@ public class ShopController {
 
     //create a new shop
     @PostMapping
-    public void addShop(@RequestBody Shop shop){
+    public ResponseEntity<?> addShop(@RequestBody Shop shop){
         service.addShop(shop);
+        return ResponseEntity.status(HttpStatus.CREATED).body(shop);
     }
 
     //update a shop
