@@ -3,7 +3,6 @@ package com.itAcademy.ex13paintingshop.repository;
 import com.itAcademy.ex13paintingshop.model.Painting;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.List;
 import java.util.Optional;
 
 @Repository
